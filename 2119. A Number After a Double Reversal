@@ -1,0 +1,14 @@
+**in C++**
+
+class Solution {
+public:
+    bool isSameAfterReversals(int num) {
+        // if last digit is 0 and the number is not 0, return false - example 2
+        if (num % 10 == 0 && num != 0) {
+            return false;
+        }
+        else { // every other instance will be true
+            return true;
+        }
+	}
+};
