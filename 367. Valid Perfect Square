@@ -1,0 +1,13 @@
+**in C++**
+
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        int sqrt = pow(num, 0.5); // num^0.5 = √num
+        
+        if (num % sqrt == 0 && sqrt == num / sqrt) { // if answer is a whole number AND sqrt is the same # as int division
+            return true;
+        }
+            return false; // false otherwise
+    }
+};
