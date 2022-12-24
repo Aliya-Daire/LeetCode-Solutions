@@ -1,0 +1,32 @@
+**in C++** 
+
+class Solution {
+public:
+    int reverse(int x) {
+        int rev = 0; // initialize rev
+        while (x != 0) { // until x is 0
+            // pop mathematical operation
+            int pop = x % 10; // remainder of x
+            x /= 10; // divide x by 10 to update x each time
+
+            // edge cases: 32-bit integer range [-2^31, 2^31 - 1]
+
+            // INT_MAX = 2^31 - 1 = 2147483648 - 1 = 2147483647
+            // pop = 2147483647 % 10 = 7; 2147483647 is the biggest
+            // 2147483648 is out of bounds, so remainder can't be 8
+            if (rev > INT_MAX / 10 || (rev == INT_MAX / 10 && pop > 7)) {
+                return 0;
+            } 
+
+            // INT_MIN = -2147483648
+            // pop = -2147483648 % 10 = -8; -2147483648 is the smallest
+            // remainder can't be smaller than -8: -9, -10, ...
+            if (rev < INT_MIN / 10 || (rev == INT_MIN / 10 && pop < -8)) {
+                return 0;
+            }
+
+            rev = rev * 10 + pop; // push mathematical operation
+        }
+        return rev; // return int
+    }
+};
