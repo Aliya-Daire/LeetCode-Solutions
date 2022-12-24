@@ -1,0 +1,14 @@
+**in C++**
+
+class Solution {
+public:
+    bool judgeSquareSum(int c) {
+        for (int a = 0; a <= pow(c, 0.5); a++) { // a can't be greater than √c
+            int b = pow(c - a*a, 0.5); // a^2 + b^2 = c --> b = √()c - a^2)
+                if (a*a + b*b == c) { // a^2 + b^2 = c
+                    return true;
+                }
+        }
+        return false; // false otherwise
+    }
+};
