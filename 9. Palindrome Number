@@ -1,0 +1,22 @@
+**in C++**
+
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        // takes care of edge cases
+        // can't be a palindrome if negative
+        // can't be a palindrime if has 0 at the end and not 0 at the front
+        if (x < 0 || x % 10 == 0 && x != 0) {
+            return false; // not a palindrome
+        }
+
+        int revertedNumber = 0;
+        while (x > revertedNumber) { // when input is no longer greater than revertedNumber, we know we've reached half of the input
+            revertedNumber = revertedNumber * 10 + x % 10; 
+            x /= 10; // update x to keep comparing x and revertedNumber
+        }
+        
+        // for even length integers   // for odd length integers
+        return x == revertedNumber || x == revertedNumber/10;
+    }
+};
