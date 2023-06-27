@@ -1,0 +1,44 @@
+**in C++**
+
+vector<int> twoSum(vector<int>& nums, int target)
+{
+    int n = nums.size();
+
+    // edge cases - constraints
+    vector<int> res;
+    if (nums.size() < 2 || nums.size() > 10000)
+    { // 2 <= nums.length <= 10^4
+        return res;
+    }
+
+    for (int i = 0; i < nums.size(); i++)
+    { // -10^9 <= nums[i] <= 10^9
+        if (nums[i] < -1000000000 || nums[i] > 1000000000)
+        {
+            return res;
+        }
+    }
+
+    if (target < -1000000000 || target > 1000000000)
+    { // -10^9 <= target <= 10^9
+        return res;
+    }
+
+    // second vec outside of edge cases
+    vector<int> ans;
+    // nested loops
+    for (int i = 0; i < nums.size(); i++)
+    {
+        for (int j = i+1; j < nums.size(); j++)
+        { // second loop will start at second number after i's value
+            if (nums[i] + nums[j] == target)
+            { // check if addition matches target 
+                // add indices to vector
+                ans.push_back(i); 
+                ans.push_back(j);
+                return ans; // return vec immediately
+            }
+        }
+    }
+    return ans;
+}
