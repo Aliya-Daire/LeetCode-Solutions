@@ -1,0 +1,33 @@
+**in C++**
+
+bool containsDuplicate(vector<int>& nums) 
+{
+    // edge cases - constraints
+    if (nums.empty() || nums.size() > 100000)
+    {  // 1 <= nums.length <= 10^5
+        return false;
+    }
+    for (int i = 0; i < nums.size(); i++)
+    { // -10^9 <= nums[i] <= 10^9
+        if (nums[i] < -1000000000 || nums[i] > 1000000000)
+        {
+            return false;
+        }
+    }
+
+    unordered_map<int,int> map;
+    for (int i = 0; i < nums.size(); i++)
+    { // track how many times a num is repeated
+        map[nums[i]]++; // inc frequency
+    }
+    // compare map and vector size
+    if (map.size() < nums.size())
+    { 
+        return true; 
+    }
+    if (map.size() == nums.size())
+    { 
+        return false;
+    }
+    return false;
+}
