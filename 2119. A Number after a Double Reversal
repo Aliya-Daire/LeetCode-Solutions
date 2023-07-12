@@ -1,0 +1,13 @@
+**in C++**
+
+bool isSameAfterReversals(int num) {
+        // edge cases - constraints
+        if (num < 0 || num > 1000000)
+        {
+            return false;
+        }
+
+        // if last digit is 0 and the number is not 0, return false (example 2)
+        return (num == 0 || num % 10 != 0);
+    }
+};
